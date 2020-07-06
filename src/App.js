@@ -17,13 +17,19 @@ function App() {
     // add the given item to the cart
     setCart([...cart, item]);
   };
+
+  //Stretch attempt for removeItem
+  const removeItem = (itemID) => {
+    setCart(cart.filter((item) => itemID !== item.id));
+  };
+
   //wrap the following in ProductContext.Provider for root provider
   //then wrap components in CartContext.Provider
 
   return (
     <div className="App">
       <ProductContext.Provider value={{ products, addItem }}>
-        <CartContext.Provider value={{ cart }}>
+        <CartContext.Provider value={{ cart, removeItem }}>
           <Navigation cart={cart} />
 
           {/* Routes */}
